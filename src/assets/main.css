@@ -16,7 +16,9 @@
 
 @font-face {
   font-family: SourceCodePro;
-  src: local('SourceCodePro'), url(@/assets/fonts/SourceCodePro-VariableFont_wght.ttf) format('truetype');
+  src:
+    local('SourceCodePro'),
+    url(@/assets/fonts/SourceCodePro-VariableFont_wght.ttf) format('truetype');
 }
 
 * {
@@ -33,13 +35,15 @@ main {
   flex: 1;
 }
 
-a, .link {
+a,
+.link {
   font-weight: 500;
   color: #646cff;
   text-decoration: inherit;
   cursor: pointer;
 }
-a:hover, .link:hover {
+a:hover,
+.link:hover {
   color: #535bf2;
 }
 
@@ -55,7 +59,9 @@ input {
   color: #fff;
   font-size: 16px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-  transition: background-color 0.3s, box-shadow 0.3s;
+  transition:
+    background-color 0.3s,
+    box-shadow 0.3s;
   text-transform: none;
 }
 
@@ -81,7 +87,7 @@ input[readonly] {
   opacity: 0.7;
 }
 
-input[type="checkbox"] {
+input[type='checkbox'] {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
@@ -96,11 +102,11 @@ input[type="checkbox"] {
   padding: 0;
 }
 
-input[type="checkbox"]:checked {
+input[type='checkbox']:checked {
   background-color: #4c6daf; /* Change color when checked */
 }
 
-input[type="checkbox"]::before {
+input[type='checkbox']::before {
   content: '';
   position: absolute;
   width: 25px;
@@ -111,11 +117,11 @@ input[type="checkbox"]::before {
   transition: transform 0.3s;
 }
 
-input[type="checkbox"]:checked::before {
+input[type='checkbox']:checked::before {
   transform: translateX(25px); /* Move the block to the right when checked */
 }
 
-input[type="checkbox"] + label {
+input[type='checkbox'] + label {
   font-size: 16px; /* Adjust the font size as needed */
   color: #fff;
   line-height: 25px; /* Match the height of the checkbox for vertical alignment */
@@ -131,7 +137,9 @@ button {
   color: #fff;
   font-size: 16px;
   cursor: pointer;
-  transition: background-color 0.3s, box-shadow 0.3s;
+  transition:
+    background-color 0.3s,
+    box-shadow 0.3s;
 }
 
 button:hover {
