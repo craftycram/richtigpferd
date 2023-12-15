@@ -74,12 +74,18 @@ watch(length, (update) => length.value = update > 64 ? 64 : update <= 0 ? 1 : up
     <div class="col center" style="align-items: start;">
       <h1 class="mt0">r1cht1g pf3rd</h1>
       <div style="width: 100%">
-        <input type="text" readonly v-model="password" style="text-transform: none; width: 100%;">
+        <input type="text" readonly v-model="password" style="text-transform: none; width: 80%;">
+        <input class="ml1 words" type="number" name="length" id="length" v-model="length" min="1" max="64" style="width: 7ch" @change="generate">
+        <!-- label for="length" class="ml1">length</-->
       </div>
       <div class="row" style="justify-content: center;">
         <button @click="generate" :disabled="!loaded" class="mtb1 mr1 primary">Generate</button>
         <button @click="copy" :disabled="!loaded" class="mtb1 mr1 primary" style="width: calc(4ch + 40px);">{{ copied ? '✔︎' : 'Copy' }}</button>
-        <div class="" style="display: inline-flex;">
+        <!--div class="row mtb1" style="align-items: center;">
+          <input type="number" name="length" id="length" v-model="length" min="1" max="64" style="width: 7ch" @change="generate">
+          <label for="length" class="ml1">length</label>
+        </div-->
+        <div class="ml1" style="display: inline-flex;">
           <div class="row" style="align-items: center;">
             <input type="checkbox" name="customize" id="customize" v-model="customize">
             <label for="customize">customize</label>
@@ -87,10 +93,6 @@ watch(length, (update) => length.value = update > 64 ? 64 : update <= 0 ? 1 : up
         </div>
       </div>
       <div v-if="customize">
-        <div class="row mtb1" style="align-items: center;">
-          <input type="number" name="length" id="length" v-model="length" min="1" max="64" style="width: 7ch" @change="generate">
-          <label for="length" class="ml1">length</label>
-        </div>
         <div class="row mtb025">
           <input type="checkbox" name="addDigit" id="addDigit" v-model="digit" @change="generate">
           <label for="addDigit">add digit</label>
@@ -111,3 +113,10 @@ watch(length, (update) => length.value = update > 64 ? 64 : update <= 0 ? 1 : up
     </div>
   </main>
 </template>
+
+<style scoped>
+.words::after {
+  content: 'words';
+  margin-left: 0.25rem;
+}
+</style>
