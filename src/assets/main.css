@@ -81,6 +81,49 @@ input[readonly] {
   opacity: 0.7;
 }
 
+input[type="checkbox"] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 50px;
+  height: 25px;
+  background-color: #555;
+  position: relative;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  outline: none;
+  border: none;
+  padding: 0;
+}
+
+input[type="checkbox"]:checked {
+  background-color: #4c6daf; /* Change color when checked */
+}
+
+input[type="checkbox"]::before {
+  content: '';
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  background-color: #fff;
+  top: 0;
+  left: 0;
+  transition: transform 0.3s;
+}
+
+input[type="checkbox"]:checked::before {
+  transform: translateX(25px); /* Move the block to the right when checked */
+}
+
+input[type="checkbox"] + label {
+  font-size: 16px; /* Adjust the font size as needed */
+  color: #fff;
+  line-height: 25px; /* Match the height of the checkbox for vertical alignment */
+  display: flex;
+  align-items: center; /* Vertically center the text */
+  padding-left: 0.5rem;
+}
+
 button {
   padding: 12px 20px;
   border: none;
@@ -221,11 +264,18 @@ button:disabled:hover {
   margin-top: 1rem;
   margin-bottom: 1rem;
 }
+.mtb025 {
+  margin-top: 0.25rem;
+  margin-bottom: 0.25rem;
+}
 .mt0 {
   margin-top: 0;
 }
 .mr1 {
   margin-right: 1rem;
+}
+.ml1 {
+  margin-left: 1rem;
 }
 
 .content {
