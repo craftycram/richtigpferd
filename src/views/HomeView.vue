@@ -1,9 +1,10 @@
 <script setup>
-import { ref } from 'vue'
+import { ref, watch } from 'vue'
 
 const wordlist = ref([])
 const loaded = ref(false)
 const password = ref('')
+const customize = ref(false)
 const length = ref(4)
 const digit = ref(true)
 const keepCase = ref(true)
@@ -31,14 +32,17 @@ function generate() {
   }
 
   let result = ''
+  if (uppercase.value && !keepCase.value) {
+    words = words.map(word => {
+      console.log(word);
+      return `${word.charAt(0).toUpperCase()}${word.slice(1)}`
+    })
+  } else if (!keepCase.value) {
+    words = words.map(word => word.toLowerCase())
+  }
   if (digit.value) {
     const randomIndex = Math.floor(Math.random() * 10)
     words.push(randomIndex)
-  }
-  if (uppercase.value && !keepCase.value) {
-    words.map(word => `${word[0].toUpperCase()}${word.slice(1)}`)
-  } else if (!keepCase.value) {
-    words.map(word => word.toLowerCase())
   }
   if (dash.value) {
     result = words.join('-')
@@ -61,6 +65,8 @@ async function copy() {
     copied.value = false
   }
 }
+
+watch(length, (update) => length.value = update > 64 ? 64 : update <= 0 ? 1 : update)
 </script>
 
 <template>
@@ -70,9 +76,37 @@ async function copy() {
       <div style="width: 100%">
         <input type="text" readonly v-model="password" style="text-transform: none; width: 100%;">
       </div>
-      <div>
+      <div class="row" style="justify-content: center;">
         <button @click="generate" :disabled="!loaded" class="mtb1 mr1 primary">Generate</button>
         <button @click="copy" :disabled="!loaded" class="mtb1 mr1 primary" style="width: calc(4ch + 40px);">{{ copied ? '✔︎' : 'Copy' }}</button>
+        <div class="" style="display: inline-flex;">
+          <div class="row" style="align-items: center;">
+            <input type="checkbox" name="customize" id="customize" v-model="customize">
+            <label for="customize">customize</label>
+          </div>
+        </div>
+      </div>
+      <div v-if="customize">
+        <div class="row mtb1" style="align-items: center;">
+          <input type="number" name="length" id="length" v-model="length" min="1" max="64" style="width: 7ch" @change="generate">
+          <label for="length" class="ml1">length</label>
+        </div>
+        <div class="row mtb025">
+          <input type="checkbox" name="addDigit" id="addDigit" v-model="digit" @change="generate">
+          <label for="addDigit">add digit</label>
+        </div>
+        <div class="row mtb025">
+          <input type="checkbox" name="keepCase" id="keepCase" v-model="keepCase" @change="generate">
+          <label for="keepCase">keep case</label>
+        </div>
+        <div class="row mtb025" v-if="!keepCase">
+          <input type="checkbox" name="uppercase" id="uppercase" v-model="uppercase" @change="generate">
+          <label for="uppercase">first letter uppercase</label>
+        </div>
+        <div class="row mtb025">
+          <input type="checkbox" name="addDash" id="addDash" v-model="dash" @change="generate">
+          <label for="addDash">add dashes</label>
+        </div>
       </div>
     </div>
   </main>
