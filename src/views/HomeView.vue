@@ -1,32 +1,49 @@
 <script setup>
 import { ref } from 'vue'
 
+const wordlist = ref([])
+const loaded = ref(false)
 const password = ref('')
-const length = ref(16)
+const length = ref(4)
 const digit = ref(true)
+const keepCase = ref(true)
 const uppercase = ref(true)
 const dash = ref(true)
 
 const copied = ref(false)
 const copiedTimeout = ref(null)
 
+fetch('/wordlist.txt')
+  .then(response => response.text())
+  .then(text => text.split('\n'))
+  .then(list => wordlist.value = list)
+  .then(() => loaded.value = true)
+  .then(() => generate())
+
 function generate() {
+  console.log(wordlist);
   copied.value = false
 
-  const chars = 'abcdefghijklmnopqrstuvwxyz'
-  const digits = '0123456789'
-  const uppercaseChars = chars.toUpperCase()
-  const specialChars = '-_!@#$%^&*()'
-
-  let pool = chars
-  if (digit.value) pool += digits
-  if (uppercase.value) pool += uppercaseChars
-  if (dash.value) pool += specialChars
+  let words = []
+  for (let i = 0; i < length.value; i++) {
+    const randomIndex = Math.floor(Math.random() * wordlist.value.length)
+    words.push(wordlist.value[randomIndex])
+  }
 
   let result = ''
-  for (let i = 0; i < length.value; i++) {
-    const randomIndex = Math.floor(Math.random() * pool.length)
-    result += pool[randomIndex]
+  if (digit.value) {
+    const randomIndex = Math.floor(Math.random() * 10)
+    words.push(randomIndex)
+  }
+  if (uppercase.value && !keepCase.value) {
+    words.map(word => `${word[0].toUpperCase()}${word.slice(1)}`)
+  } else if (!keepCase.value) {
+    words.map(word => word.toLowerCase())
+  }
+  if (dash.value) {
+    result = words.join('-')
+  } else {
+    result = words.join('')
   }
 
   password.value = result
@@ -44,8 +61,6 @@ async function copy() {
     copied.value = false
   }
 }
-
-generate()
 </script>
 
 <template>
@@ -56,8 +71,8 @@ generate()
         <input type="text" readonly v-model="password" style="text-transform: none; width: 100%;">
       </div>
       <div>
-        <button @click="generate" class="mtb1 mr1 primary">Generate</button>
-        <button @click="copy" class="mtb1 mr1 primary" style="width: calc(4ch + 40px);">{{ copied ? '✔︎' : 'Copy' }}</button>
+        <button @click="generate" :disabled="!loaded" class="mtb1 mr1 primary">Generate</button>
+        <button @click="copy" :disabled="!loaded" class="mtb1 mr1 primary" style="width: calc(4ch + 40px);">{{ copied ? '✔︎' : 'Copy' }}</button>
       </div>
     </div>
   </main>
