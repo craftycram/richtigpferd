@@ -278,6 +278,14 @@ button:disabled:hover {
   margin-left: 1rem;
 }
 
+.w100 {
+  width: 100%;
+}
+
+.spacer {
+  flex: 1;
+}
+
 .content {
   min-width: 300px;
 }

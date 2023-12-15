@@ -73,12 +73,16 @@ watch(length, (update) => length.value = update > 64 ? 64 : update <= 0 ? 1 : up
   <main class="container">
     <div class="col center" style="align-items: start;">
       <h1 class="mt0">r1cht1g pf3rd</h1>
-      <div style="width: 100%">
-        <input type="text" readonly v-model="password" style="text-transform: none; width: 80%;">
-        <input class="ml1 words" type="number" name="length" id="length" v-model="length" min="1" max="64" style="width: 7ch" @change="generate">
-        <!-- label for="length" class="ml1">length</-->
+      <div style="width: 100%" class="row">
+        <div class="col">
+          <input type="text" readonly v-model="password" style="text-transform: none; width: 80%;">
+        </div>
+        <div class="col">
+          <input class="ml1 words" type="number" name="length" id="length" v-model="length" min="1" max="64" style="width: 7ch" @change="generate">
+          <!-- label for="length" class="ml1">length</-->
+        </div>
       </div>
-      <div class="row" style="justify-content: center;">
+      <div class="row w100">
         <button @click="generate" :disabled="!loaded" class="mtb1 mr1 primary">Generate</button>
         <button @click="copy" :disabled="!loaded" class="mtb1 mr1 primary" style="width: calc(4ch + 40px);">{{ copied ? '✔︎' : 'Copy' }}</button>
         <!--div class="row mtb1" style="align-items: center;">
@@ -91,6 +95,8 @@ watch(length, (update) => length.value = update > 64 ? 64 : update <= 0 ? 1 : up
             <label for="customize">customize</label>
           </div>
         </div>
+        <div class="spacer" />
+        <RouterLink to="/about" style="display: inline-flex; align-items: center; float: right;">test</RouterLink>
       </div>
       <div v-if="customize">
         <div class="row mtb025">
