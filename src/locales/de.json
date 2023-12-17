@@ -1,0 +1,27 @@
+{
+  "generic": {
+    "back": "Zurück"
+  },
+  "main": {
+    "generate": "Generieren",
+    "copy": "Kopieren",
+    "customize": "Anpassen",
+    "customizations": {
+      "addDigit": "Ziffer hinzufügen",
+      "keepCase": "Groß-/Kleinschreibung beibehalten",
+      "uppercase": "Erste Buchstaben groß",
+      "addDashes": "Bindestriche hinzufügen"
+    },
+    "about": "Über"
+  },
+  "about": {
+    "intro": "richtig pferd ist ein Password Generator. Er generiert Passwörter, die leicht zu merken, aber schwer zu erraten sind. Alle Passwörter werden ausschließlich in deinem Browser generiert. Es werden keine Daten an einen Server übertragen.\nInsprieriert ist dieses Projekt von dem {0}.",
+    "xkdc": "XKCD Comic \"Password Strength\"",
+    "words": "Um sichere Passwörter zu generieren, werden zufällige Wörter aus einer {0} mit über 25.000 Deutschen Wörtern ausgewählt. Darunter befinden sich Substantive, Verben und Adjektive. Die Wörter werden zufällig ausgewählt und aneinander gehängt.",
+    "wordlist": "Wortliste",
+    "sources": "Wort-Quellen",
+    "poweredBy": "Erstellt und bereigtestellt von",
+    "contributors": "Weitere Mitwirkende finden sich auf {0}.",
+    "gift": "Dieses Projekt ist ein Geschenk für meinen langjährigen Mentor und Freund"
+  }
+}

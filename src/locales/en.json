@@ -1,0 +1,17 @@
+{
+  "generic": {
+    "back": "Back"
+  },
+  "main": {
+    "generate": "Generate",
+    "copy": "Copy",
+    "customize": "Customize",
+    "customizations": {
+      "addDigit": "Add digit",
+      "keepCase": "Keep case",
+      "uppercase": "first letter uppercase",
+      "addDashes": "Add dashes"
+    },
+    "about": "About"
+  }
+}
