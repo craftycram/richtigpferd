@@ -316,3 +316,7 @@ form > *:last-child {
 form > input {
   width: 100%;
 }
+
+.text {
+  text-transform: none;
+}
