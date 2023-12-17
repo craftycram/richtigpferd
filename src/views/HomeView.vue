@@ -75,17 +75,21 @@ watch(
 <template>
   <main class="container">
     <div class="col center" style="align-items: start">
-      <h1 class="mt0">r1cht1g pf3rd</h1>
-      <div style="width: 100%" class="row">
+      <div class="row" style="width: 100%; gap: 1rem">
         <div class="col">
+          <h1 class="mt0">r1cht1g pf3rd</h1>
+        </div>
+      </div>
+      <div style="width: 100%" class="row">
+        <div class="col" style="width: 100%">
           <input
             type="text"
             readonly
             v-model="password"
-            style="text-transform: none; width: 80%"
+            style="text-transform: none; width: auto"
           />
         </div>
-        <div class="col">
+        <div class="col" style="width: fit-content">
           <input
             class="ml1 words"
             type="number"
@@ -102,15 +106,15 @@ watch(
       </div>
       <div class="row w100">
         <button @click="generate" :disabled="!loaded" class="mtb1 mr1 primary">
-          Generate
+          {{ $t('main.generate') }}
         </button>
         <button
           @click="copy"
           :disabled="!loaded"
           class="mtb1 mr1 primary"
-          style="width: calc(4ch + 40px)"
+          :style="{ width: `calc(${$t('main.copy').length}ch + 40px)` }"
         >
-          {{ copied ? '✔︎' : 'Copy' }}
+          {{ copied ? '✔︎' : $t('main.copy') }}
         </button>
         <!--div class="row mtb1" style="align-items: center;">
           <input type="number" name="length" id="length" v-model="length" min="1" max="64" style="width: 7ch" @change="generate">
@@ -124,7 +128,7 @@ watch(
               id="customize"
               v-model="customize"
             />
-            <label for="customize">customize</label>
+            <label for="customize">{{ $t('main.customize') }}</label>
           </div>
         </div>
         <div class="spacer" />
@@ -132,7 +136,7 @@ watch(
           to="/about"
           style="display: inline-flex; align-items: center; float: right"
         >
-          test
+          {{ $t('main.about') }}
         </RouterLink>
       </div>
       <div v-if="customize">
@@ -144,7 +148,7 @@ watch(
             v-model="digit"
             @change="generate"
           />
-          <label for="addDigit">add digit</label>
+          <label for="addDigit">{{ $t('main.customizations.addDigit') }}</label>
         </div>
         <div class="row mtb025">
           <input
@@ -154,7 +158,7 @@ watch(
             v-model="keepCase"
             @change="generate"
           />
-          <label for="keepCase">keep case</label>
+          <label for="keepCase">{{ $t('main.customizations.keepCase') }}</label>
         </div>
         <div class="row mtb025" v-if="!keepCase">
           <input
@@ -164,7 +168,9 @@ watch(
             v-model="uppercase"
             @change="generate"
           />
-          <label for="uppercase">first letter uppercase</label>
+          <label for="uppercase">{{
+            $t('main.customizations.uppercase')
+          }}</label>
         </div>
         <div class="row mtb025">
           <input
@@ -174,7 +180,7 @@ watch(
             v-model="dash"
             @change="generate"
           />
-          <label for="addDash">add dashes</label>
+          <label for="addDash">{{ $t('main.customizations.addDashes') }}</label>
         </div>
       </div>
     </div>
