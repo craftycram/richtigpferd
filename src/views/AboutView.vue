@@ -55,6 +55,20 @@ import { RouterLink } from 'vue-router';
           >
         </i18n-t>
       </p>
+      <p class="text">
+        <i18n-t keypath="about.contribute" class="text">
+          <a
+            href="https://github.com/craftycram/richtig-pferd"
+            target="_blank"
+            class="text"
+            >GitHub</a
+          >
+        </i18n-t>
+      </p>
+      <p class="text">
+        {{ $t('about.languages') }}:
+        {{ $i18n.availableLocales.join(', ') }}
+      </p>
       <small style="margin-bottom: 1rem"
         ><sub class="text">
           {{ $t('about.gift') }}
