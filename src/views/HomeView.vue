@@ -75,21 +75,19 @@ watch(
 <template>
   <main class="container">
     <div class="col center" style="align-items: start">
-      <div class="row" style="width: 100%; gap: 1rem">
+      <div class="row">
         <div class="col">
           <h1 class="mt0">r1cht1g pf3rd</h1>
         </div>
       </div>
-      <div style="width: 100%" class="row">
-        <div class="col" style="width: 100%">
+      <div class="row w100">
+        <div class="col col-12" style="flex-direction: row">
           <input
             type="text"
             readonly
             v-model="password"
-            style="text-transform: none; width: auto"
+            style="text-transform: none; flex-grow: 1"
           />
-        </div>
-        <div class="col" style="width: fit-content">
           <input
             class="ml1 words"
             type="number"
@@ -105,39 +103,48 @@ watch(
         </div>
       </div>
       <div class="row w100">
-        <button @click="generate" :disabled="!loaded" class="mtb1 mr1 primary">
-          {{ $t('main.generate') }}
-        </button>
-        <button
-          @click="copy"
-          :disabled="!loaded"
-          class="mtb1 mr1 primary"
-          :style="{ width: `calc(${$t('main.copy').length}ch + 40px)` }"
-        >
-          {{ copied ? '✔︎' : $t('main.copy') }}
-        </button>
+        <div class="col col-lg-2 col-md-3 col-sm-6 col-6">
+          <button @click="generate" :disabled="!loaded" class="mtb1 primary">
+            {{ $t('main.generate') }}
+          </button>
+        </div>
+        <div class="col col-lg-2 col-md-2 col-sm-6 col-6">
+          <button @click="copy" :disabled="!loaded" class="mtb1 primary">
+            {{ copied ? '✔︎' : $t('main.copy') }}
+          </button>
+        </div>
         <!--div class="row mtb1" style="align-items: center;">
           <input type="number" name="length" id="length" v-model="length" min="1" max="64" style="width: 7ch" @change="generate">
           <label for="length" class="ml1">length</label>
         </div-->
-        <div class="ml1" style="display: inline-flex">
-          <div class="row" style="align-items: center">
-            <input
-              type="checkbox"
-              name="customize"
-              id="customize"
-              v-model="customize"
-            />
-            <label for="customize">{{ $t('main.customize') }}</label>
+        <div
+          class="col col-lg-2 col-md-4 col-sm-6 col-6"
+          style="justify-content: center"
+        >
+          <div class="ml1" style="display: inline-flex">
+            <div class="row" style="align-items: center; flex-wrap: nowrap">
+              <input
+                type="checkbox"
+                name="customize"
+                id="customize"
+                v-model="customize"
+              />
+              <label for="customize">{{ $t('main.customize') }}</label>
+            </div>
           </div>
         </div>
         <div class="spacer" />
-        <RouterLink
-          to="/about"
-          style="display: inline-flex; align-items: center; float: right"
+        <div
+          class="col col-1"
+          style="justify-content: center; align-items: end"
         >
-          {{ $t('main.about') }}
-        </RouterLink>
+          <RouterLink
+            to="/about"
+            style="display: inline-flex; align-items: center; float: right"
+          >
+            {{ $t('main.about') }}
+          </RouterLink>
+        </div>
       </div>
       <div v-if="customize">
         <div class="row mtb025">
