@@ -147,47 +147,61 @@ watch(
         </div>
       </div>
       <div v-if="customize">
-        <div class="row mtb025">
-          <input
-            type="checkbox"
-            name="addDigit"
-            id="addDigit"
-            v-model="digit"
-            @change="generate"
-          />
-          <label for="addDigit">{{ $t('main.customizations.addDigit') }}</label>
+        <div class="row mtb025" style="flex-wrap: nowrap">
+          <div class="col" style="flex-direction: row">
+            <input
+              type="checkbox"
+              name="addDigit"
+              id="addDigit"
+              v-model="digit"
+              @change="generate"
+            />
+            <label for="addDigit">{{
+              $t('main.customizations.addDigit')
+            }}</label>
+          </div>
         </div>
-        <div class="row mtb025">
-          <input
-            type="checkbox"
-            name="keepCase"
-            id="keepCase"
-            v-model="keepCase"
-            @change="generate"
-          />
-          <label for="keepCase">{{ $t('main.customizations.keepCase') }}</label>
+        <div class="row mtb025" style="flex-wrap: nowrap">
+          <div class="col" style="flex-direction: row">
+            <input
+              type="checkbox"
+              name="keepCase"
+              id="keepCase"
+              v-model="keepCase"
+              @change="generate"
+            />
+            <label for="keepCase">{{
+              $t('main.customizations.keepCase')
+            }}</label>
+          </div>
         </div>
         <div class="row mtb025" v-if="!keepCase">
-          <input
-            type="checkbox"
-            name="uppercase"
-            id="uppercase"
-            v-model="uppercase"
-            @change="generate"
-          />
-          <label for="uppercase">{{
-            $t('main.customizations.uppercase')
-          }}</label>
+          <div class="col" style="flex-direction: row">
+            <input
+              type="checkbox"
+              name="uppercase"
+              id="uppercase"
+              v-model="uppercase"
+              @change="generate"
+            />
+            <label for="uppercase">{{
+              $t('main.customizations.uppercase')
+            }}</label>
+          </div>
         </div>
-        <div class="row mtb025">
-          <input
-            type="checkbox"
-            name="addDash"
-            id="addDash"
-            v-model="dash"
-            @change="generate"
-          />
-          <label for="addDash">{{ $t('main.customizations.addDashes') }}</label>
+        <div class="row mtb025" style="flex-wrap: nowrap">
+          <div class="col" style="flex-direction: row">
+            <input
+              type="checkbox"
+              name="addDash"
+              id="addDash"
+              v-model="dash"
+              @change="generate"
+            />
+            <label for="addDash">{{
+              $t('main.customizations.addDashes')
+            }}</label>
+          </div>
         </div>
       </div>
     </div>
