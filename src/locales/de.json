@@ -22,6 +22,8 @@
     "sources": "Wort-Quellen",
     "poweredBy": "Erstellt und bereigtestellt von",
     "contributors": "Weitere Mitwirkende finden sich auf {0}.",
-    "gift": "Dieses Projekt ist ein Geschenk für meinen langjährigen Mentor und Freund"
+    "gift": "Dieses Projekt ist ein Geschenk für meinen langjährigen Mentor und Freund",
+    "contribute": "Wenn du helfen möchtest, dieses Projekt zu verbessern oder zu übersetzen, kannst du das auf {0} tun.",
+    "languages": "Verfügbare Sprachen"
   }
 }

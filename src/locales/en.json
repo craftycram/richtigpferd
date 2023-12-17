@@ -9,9 +9,21 @@
     "customizations": {
       "addDigit": "Add digit",
       "keepCase": "Keep case",
-      "uppercase": "first letter uppercase",
+      "uppercase": "First letter uppercase",
       "addDashes": "Add dashes"
     },
     "about": "About"
+  },
+  "about": {
+    "intro": "Richtig Pferd is a password generator. It generates passwords that are easy to remember but hard to guess. All passwords are generated exclusively in your browser. No data is transmitted to a server.\nThis project is inspired by the {0}.",
+    "xkdc": "XKCD Comic \"Password Strength\"",
+    "words": "To generate secure passwords, random words are selected from a {0} containing over 25,000 German words. These include nouns, verbs, and adjectives. The words are randomly chosen and concatenated.",
+    "wordlist": "Word List",
+    "sources": "Word Sources",
+    "poweredBy": "Created and provided by",
+    "contributors": "Additional contributors can be found on {0}.",
+    "gift": "This project is a gift for my longtime mentor and friend",
+    "contribute": "If you want to contribute to this project or help translate it, you can do so on {0}.",
+    "languages": "available languages"
   }
 }
