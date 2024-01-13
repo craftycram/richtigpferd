@@ -1,35 +1,30 @@
-# richtig-pferd
+# richtig pferd - Password Generator
 
-This template should help get you started developing with Vue 3 in Vite.
+## About
 
-## Recommended IDE Setup
+**richtig pferd** is a password generator that creates passwords which are easy to remember but hard to guess. This tool operates entirely within your browser, ensuring that no data is transferred to any server. The project is inspired by the [XKCD Comic "Password Strength"](https://xkcd.com/936/).
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+## How It Works
 
-## Customize configuration
+To generate secure passwords, **richtig pferd** randomly selects words from a [word list](https://richtigpferd.pw/wordlist.txt) containing over 25,000 German words, including nouns, verbs, and adjectives. These words are randomly combined to form the password.
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+## Word Sources
 
-## Project Setup
+The words are sourced from [GitHub - AlleDeutschenWoerter](https://github.com/cpos/AlleDeutschenWoerter).
 
-```sh
-yarn
-```
+## Credits
 
-### Compile and Hot-Reload for Development
+Created and provided by [Marc Rufeis](https://www.marcrufeis.de/) & [ITMR Developments](https://itmr-dev.de/). Additional contributors can be found on [GitHub](https://github.com/craftycram/richtig-pferd).
 
-```sh
-yarn dev
-```
+## Contributing
 
-### Compile and Minify for Production
+If you would like to help improve or translate this project, you can do so on [GitHub](https://github.com/craftycram/richtig-pferd).
 
-```sh
-yarn build
-```
+## Languages Available
 
-### Lint with [ESLint](https://eslint.org/)
+- German (de)
+- English (en)
 
-```sh
-yarn lint
-```
+---
+
+*This project is a gift for my long-time mentor and friend [Florian Geiselhart](https://www.florian-geiselhart.de/).*
