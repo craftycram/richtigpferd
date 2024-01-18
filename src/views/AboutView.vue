@@ -48,7 +48,7 @@ import { RouterLink } from 'vue-router';
         >.
         <i18n-t keypath="about.contributors" class="text">
           <a
-            href="https://github.com/craftycram/richtig-pferd"
+            href="https://github.com/craftycram/richtigpferd"
             target="_blank"
             class="text"
             >GitHub</a
@@ -58,7 +58,7 @@ import { RouterLink } from 'vue-router';
       <p class="text">
         <i18n-t keypath="about.contribute" class="text">
           <a
-            href="https://github.com/craftycram/richtig-pferd"
+            href="https://github.com/craftycram/richtigpferd"
             target="_blank"
             class="text"
             >GitHub</a
