@@ -1,5 +1,5 @@
 <script setup>
-import { ref, watch } from 'vue';
+import { ref, watch, onMounted } from 'vue';
 
 const wordlist = ref([]);
 const loaded = ref(false);
@@ -66,6 +66,33 @@ async function copy() {
   }
 }
 
+function changeSettings() {
+  const settings = {
+    length: length.value,
+    digit: digit.value,
+    keepCase: keepCase.value,
+    uppercase: uppercase.value,
+    dash: dash.value,
+  };
+  localStorage.setItem('settings', JSON.stringify(settings));
+  generate();
+}
+
+function loadSettings() {
+  const settings = JSON.parse(localStorage.getItem('settings'));
+  if (settings) {
+    length.value = settings.length;
+    digit.value = settings.digit;
+    keepCase.value = settings.keepCase;
+    uppercase.value = settings.uppercase;
+    dash.value = settings.dash;
+  }
+}
+
+onMounted(() => {
+  loadSettings();
+});
+
 watch(
   length,
   (update) => (length.value = update > 64 ? 64 : update <= 0 ? 1 : update),
@@ -97,7 +124,7 @@ watch(
             min="1"
             max="64"
             style="width: 7ch"
-            @change="generate"
+            @change="changeSettings"
           />
           <!-- label for="length" class="ml1">length</-->
         </div>
@@ -114,7 +141,7 @@ watch(
           </button>
         </div>
         <!--div class="row mtb1" style="align-items: center;">
-          <input type="number" name="length" id="length" v-model="length" min="1" max="64" style="width: 7ch" @change="generate">
+          <input type="number" name="length" id="length" v-model="length" min="1" max="64" style="width: 7ch" @change="changeSettings">
           <label for="length" class="ml1">length</label>
         </div-->
         <div
@@ -154,7 +181,7 @@ watch(
               name="addDigit"
               id="addDigit"
               v-model="digit"
-              @change="generate"
+              @change="changeSettings"
             />
             <label for="addDigit">{{
               $t('main.customizations.addDigit')
@@ -168,7 +195,7 @@ watch(
               name="keepCase"
               id="keepCase"
               v-model="keepCase"
-              @change="generate"
+              @change="changeSettings"
             />
             <label for="keepCase">{{
               $t('main.customizations.keepCase')
@@ -182,7 +209,7 @@ watch(
               name="uppercase"
               id="uppercase"
               v-model="uppercase"
-              @change="generate"
+              @change="changeSettings"
             />
             <label for="uppercase">{{
               $t('main.customizations.uppercase')
@@ -196,7 +223,7 @@ watch(
               name="addDash"
               id="addDash"
               v-model="dash"
-              @change="generate"
+              @change="changeSettings"
             />
             <label for="addDash">{{
               $t('main.customizations.addDashes')
