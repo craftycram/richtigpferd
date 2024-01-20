@@ -22,7 +22,6 @@ fetch('/wordlist.txt')
   .then(() => generate());
 
 function generate() {
-  console.log(wordlist);
   copied.value = false;
 
   let words = [];
@@ -34,7 +33,6 @@ function generate() {
   let result = '';
   if (uppercase.value && !keepCase.value) {
     words = words.map((word) => {
-      console.log(word);
       return `${word.charAt(0).toUpperCase()}${word.slice(1)}`;
     });
   } else if (!keepCase.value) {
