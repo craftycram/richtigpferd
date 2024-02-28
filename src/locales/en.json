@@ -10,7 +10,8 @@
       "addDigit": "Add digit",
       "keepCase": "Keep case",
       "uppercase": "First letter uppercase",
-      "addDashes": "Add dashes"
+      "addDashes": "Add dashes",
+      "umlauts": "Use umlauts"
     },
     "about": "About"
   },

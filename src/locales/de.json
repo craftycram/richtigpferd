@@ -10,7 +10,8 @@
       "addDigit": "Ziffer hinzufügen",
       "keepCase": "Groß-/Kleinschreibung beibehalten",
       "uppercase": "Erste Buchstaben groß",
-      "addDashes": "Bindestriche hinzufügen"
+      "addDashes": "Bindestriche hinzufügen",
+      "umlauts": "Umlaute verwenden"
     },
     "about": "Über"
   },

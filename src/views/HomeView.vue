@@ -10,6 +10,7 @@ const digit = ref(true);
 const keepCase = ref(true);
 const uppercase = ref(true);
 const dash = ref(true);
+const umlauts = ref(true);
 
 const copied = ref(false);
 const copiedTimeout = ref(null);
@@ -48,6 +49,17 @@ function generate() {
     result = words.join('');
   }
 
+  if (!umlauts.value) {
+    result = result
+      .replace(/ä/g, 'ae')
+      .replace(/ö/g, 'oe')
+      .replace(/ü/g, 'ue')
+      .replace(/ß/g, 'ss')
+      .replace(/Ä/g, 'Ae')
+      .replace(/Ö/g, 'Oe')
+      .replace(/Ü/g, 'Ue');
+  }
+
   password.value = result;
 }
 
@@ -71,6 +83,7 @@ function changeSettings() {
     keepCase: keepCase.value,
     uppercase: uppercase.value,
     dash: dash.value,
+    umlauts: umlauts.value,
   };
   localStorage.setItem('settings', JSON.stringify(settings));
   generate();
@@ -84,6 +97,7 @@ function loadSettings() {
     keepCase.value = settings.keepCase;
     uppercase.value = settings.uppercase;
     dash.value = settings.dash;
+    umlauts.value = settings.umlauts;
   }
 }
 
@@ -225,6 +239,20 @@ watch(
             />
             <label for="addDash">{{
               $t('main.customizations.addDashes')
+            }}</label>
+          </div>
+        </div>
+        <div class="row mtb025" style="flex-wrap: nowrap">
+          <div class="col" style="flex-direction: row">
+            <input
+              type="checkbox"
+              name="umlauts"
+              id="umlauts"
+              v-model="umlauts"
+              @change="changeSettings"
+            />
+            <label for="umlauts">{{
+              $t('main.customizations.umlauts')
             }}</label>
           </div>
         </div>
