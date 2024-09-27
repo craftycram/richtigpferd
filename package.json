@@ -11,6 +11,7 @@
     "format": "prettier --write src/"
   },
   "dependencies": {
+    "@unhead/vue": "^1.11.6",
     "vue": "^3.3.10",
     "vue-i18n": "9",
     "vue-router": "^4.2.5"
