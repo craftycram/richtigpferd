@@ -1,5 +1,5 @@
 <script setup>
-import { ref, watch, onMounted } from 'vue';
+import { ref, watch, onMounted, onBeforeUnmount } from 'vue';
 
 const wordlist = ref([]);
 const loaded = ref(false);
@@ -14,6 +14,8 @@ const umlauts = ref(true);
 
 const copied = ref(false);
 const copiedTimeout = ref(null);
+
+const isCtrlOrMetaPressed = ref(false);
 
 fetch('/wordlist.txt')
   .then((response) => response.text())
@@ -101,8 +103,53 @@ function loadSettings() {
   }
 }
 
+function getModifierKey() {
+  let isMac = false;
+  if (navigator.userAgentData) {
+    isMac = navigator.userAgentData.platform.toLowerCase().includes('mac');
+  } else {
+    isMac = navigator.userAgent.toLowerCase().includes('mac');
+  }
+  return isMac ? '⌘' : '⌃';
+}
+
+function handleKeyboardDown(e) {
+  if (e.key === 'Control' || e.key === 'Meta') {
+    isCtrlOrMetaPressed.value = true;
+  } else if (e.key && (e.metaKey || e.ctrlKey)) {
+    isCtrlOrMetaPressed.value = false;
+    if (e.key === 'c') {
+      copy();
+    }
+  }
+  if (e.key === 'Enter') {
+    generate();
+  }
+  if (e.key === 'ArrowUp') {
+    length.value++;
+    generate();
+  }
+  if (e.key === 'ArrowDown') {
+    length.value--;
+    generate();
+  }
+}
+
+function handleKeyboardUp(e) {
+  if (e.key === 'Control' || e.key === 'Meta') {
+    isCtrlOrMetaPressed.value = false;
+  }
+}
+
 onMounted(() => {
   loadSettings();
+  document.addEventListener('keydown', handleKeyboardDown);
+  document.addEventListener('keyup', handleKeyboardUp);
+});
+
+onBeforeUnmount(() => {
+  document.removeEventListener('keydown', handleKeyboardDown);
+  document.removeEventListener('keyup', handleKeyboardUp);
 });
 
 watch(
@@ -138,17 +185,24 @@ watch(
             style="width: 7ch"
             @change="changeSettings"
           />
+          <div class="flex center pl1" v-if="isCtrlOrMetaPressed">
+            <span class="keyboard-hint key">↑</span>/<span class="keyboard-hint key">↓</span>
+          </div>
           <!-- label for="length" class="ml1">length</-->
         </div>
       </div>
       <div class="row w100">
         <div class="col col-lg-2 col-md-3 col-sm-6 col-6">
           <button @click="generate" :disabled="!loaded" class="mtb1 primary">
+            <span v-if="isCtrlOrMetaPressed" class="keyboard-hint key">⏎</span>
             {{ $t('main.generate') }}
           </button>
         </div>
         <div class="col col-lg-2 col-md-2 col-sm-6 col-6">
           <button @click="copy" :disabled="!loaded" class="mtb1 primary">
+            <span v-if="isCtrlOrMetaPressed" class="keyboard-hint">
+              <span class="key">{{ getModifierKey() }}</span> + <span class="key">C</span>
+            </span>
             {{ copied ? '✔︎' : $t('main.copy') }}
           </button>
         </div>

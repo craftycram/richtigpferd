@@ -241,6 +241,10 @@ button:disabled:hover {
   padding-bottom: 1rem;
 }
 
+.pl1 {
+  padding-left: 1rem;
+}
+
 .m05 {
   margin: 0.5rem;
 }
@@ -298,4 +302,20 @@ form > input {
 
 .text {
   text-transform: none;
+}
+
+.keyboard-hint {
+  display: inline-flex;
+  align-items: center;
+  margin-left: 8px;
+}
+
+.key {
+  background-color: #444;
+  padding: 2px 6px;
+  margin: 0 2px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-family: SourceCodePro, monospace;
+  color: #fff;
 }
