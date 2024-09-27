@@ -11,7 +11,8 @@
       "keepCase": "Keep case",
       "uppercase": "First letter uppercase",
       "addDashes": "Add dashes",
-      "umlauts": "Use umlauts"
+      "umlauts": "Use umlauts",
+      "copyOnLoad": "Copy password on page load"
     },
     "about": "About"
   },

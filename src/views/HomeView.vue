@@ -11,6 +11,7 @@ const keepCase = ref(true);
 const uppercase = ref(true);
 const dash = ref(true);
 const umlauts = ref(true);
+const copyOnLoad = ref(false);
 
 const copied = ref(false);
 const copiedTimeout = ref(null);
@@ -76,7 +77,7 @@ async function copy() {
   }
 }
 
-function changeSettings() {
+function changeSettings(g = true) {
   const settings = {
     length: length.value,
     digit: digit.value,
@@ -84,9 +85,10 @@ function changeSettings() {
     uppercase: uppercase.value,
     dash: dash.value,
     umlauts: umlauts.value,
+    copyOnLoad: copyOnLoad.value,
   };
   localStorage.setItem('settings', JSON.stringify(settings));
-  generate();
+  if (g) generate();
 }
 
 function loadSettings() {
@@ -98,11 +100,16 @@ function loadSettings() {
     uppercase.value = settings.uppercase;
     dash.value = settings.dash;
     umlauts.value = settings.umlauts;
+    copyOnLoad.value = settings.copyOnLoad;
   }
 }
 
 onMounted(() => {
   loadSettings();
+  generate();
+  if (copyOnLoad.value) {
+    copy();
+  }
 });
 
 watch(
@@ -253,6 +260,20 @@ watch(
             />
             <label for="umlauts">{{
               $t('main.customizations.umlauts')
+            }}</label>
+          </div>
+        </div>
+        <div class="row mtb025" style="flex-wrap: nowrap">
+          <div class="col" style="flex-direction: row">
+            <input
+              type="checkbox"
+              name="copyOnLoad"
+              id="copyOnLoad"
+              v-model="copyOnLoad"
+              @change="changeSettings(false)"
+            />
+            <label for="copyOnLoad">{{
+              $t('main.customizations.copyOnLoad')
             }}</label>
           </div>
         </div>
