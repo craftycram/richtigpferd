@@ -1,7 +1,8 @@
-import * as fs from 'node:fs'
+import wordlistContent from '../utils/wordlist';
 
 export default defineEventHandler(async (event) => {
   const query = getQuery(event);
+  const wordlistFile = wordlistContent;
   
   let length = 5;
   let uppercase = false;
@@ -34,8 +35,7 @@ export default defineEventHandler(async (event) => {
     };
   }
 
-  const wordlistFile = fs.readFileSync('./wordlist.txt', 'utf8');
-  const wordlist = wordlistFile.split('\n').filter((word) => word.trim() !== '');
+  const wordlist = wordlistFile.split('\n').filter((word: string) => word.trim() !== '');
 
   let words = [];
   for (let i = 0; i < length; i++) {
