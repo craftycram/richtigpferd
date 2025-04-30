@@ -1,8 +1,7 @@
-import wordlistContent from '../utils/wordlist';
+import wordlist from './wordlist.json';
 
 export default defineEventHandler(async (event) => {
   const query = getQuery(event);
-  const wordlistFile = wordlistContent;
   
   let length = 5;
   let uppercase = false;
@@ -34,8 +33,6 @@ export default defineEventHandler(async (event) => {
       error: 'Length must be between 1 and 10',
     };
   }
-
-  const wordlist = wordlistFile.split('\n').filter((word: string) => word.trim() !== '');
 
   let words = [];
   for (let i = 0; i < length; i++) {

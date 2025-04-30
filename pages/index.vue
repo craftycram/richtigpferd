@@ -1,8 +1,7 @@
 <script setup>
 import { ref, watch, onMounted, onBeforeUnmount } from 'vue';
 
-const wordlist = ref([]);
-const loaded = ref(false);
+const generating = ref(false);
 const password = ref('');
 const customize = ref(false);
 const length = ref(4);
@@ -19,6 +18,7 @@ const isCtrlOrMetaPressed = ref(false);
 
 async function generate() {
   copied.value = false;
+  generating.value = true;
   
   const data = await $fetch('/api/generate', {
     query: {
@@ -32,6 +32,7 @@ async function generate() {
   })
 
   password.value = data;
+  generating.value = false;
 }
 
 async function copy() {
@@ -115,22 +116,7 @@ onMounted(async () => {
   loadSettings();
   document.addEventListener('keydown', handleKeyboardDown);
   document.addEventListener('keyup', handleKeyboardUp);
-  
-  try {
-    const response = await fetch('/wordlist.txt', { cache: 'no-store' });
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const text = await response.text();
-    wordlist.value = text.split('\n').filter(Boolean); // Filter out empty lines
-    loaded.value = true;
-    generate();
-  } catch (error) {
-    console.error('Error loading wordlist:', error);
-    wordlist.value = ['error', 'loading', 'wordlist'];
-    loaded.value = true;
-    generate();
-  }
+  generate();
 });
 
 onBeforeUnmount(() => {
@@ -179,13 +165,13 @@ watch(
       </div>
       <div class="row w100">
         <div class="col col-lg-2 col-md-3 col-sm-6 col-6">
-          <button @click="generate" :disabled="!loaded" class="mtb1 primary">
+          <button @click="generate" :disabled="generating" class="mtb1 primary">
             <span v-if="isCtrlOrMetaPressed" class="keyboard-hint key">⏎</span>
             {{ $t('main.generate') }}
           </button>
         </div>
         <div class="col col-lg-2 col-md-2 col-sm-6 col-6">
-          <button @click="copy" :disabled="!loaded" class="mtb1 primary">
+          <button @click="copy" class="mtb1 primary">
             <span v-if="isCtrlOrMetaPressed" class="keyboard-hint">
               <span class="key">{{ getModifierKey() }}</span> + <span class="key">C</span>
             </span>
