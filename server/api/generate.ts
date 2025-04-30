@@ -34,7 +34,7 @@ export default defineEventHandler(async (event) => {
     };
   }
 
-  const wordlistFile = fs.readFileSync('../public/wordlist.txt', 'utf8');
+  const wordlistFile = fs.readFileSync('../wordlist.txt', 'utf8');
   const wordlist = wordlistFile.split('\n').filter((word) => word.trim() !== '');
 
   let words = [];
