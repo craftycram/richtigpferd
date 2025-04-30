@@ -69,5 +69,7 @@ export default defineEventHandler(async (event) => {
       .replace(/Ü/g, 'Ue');
   }
 
+  appendHeader(event, 'Content-Type', 'text/plain;charset=UTF-8'); 
+
   return result;
 });
