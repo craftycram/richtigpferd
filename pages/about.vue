@@ -1,5 +1,4 @@
 <script setup>
-import { RouterLink } from 'vue-router';
 </script>
 
 <template>
@@ -12,7 +11,7 @@ import { RouterLink } from 'vue-router';
         }}</a>
       </i18n-t>
       <i18n-t keypath="about.words" tag="p" for="about.wordlist" class="text">
-        <a href="/wordlist.txt" target="_blank" class="text">{{
+        <a href="/api/wordlist" target="_blank" class="text">{{
           $t('about.wordlist')
         }}</a>
       </i18n-t>
@@ -27,6 +26,10 @@ import { RouterLink } from 'vue-router';
           >GitHub - AlleDeutschenWoerter</a
         >
       </p>
+      <i18n-t keypath="about.api" tag="p" class="text">
+        <a href="/api/generate" target="_blank" class="text">/api/generate</a>
+        <a href="https://github.com/craftycram/richtigpferd?tab=readme-ov-file#api-documentation" target="_blank" class="text">GitHub</a>
+      </i18n-t>
       <p class="text">
         {{ $t('about.poweredBy') }}
         <a

@@ -1,7 +1,7 @@
 @import './bootstrap.css';
 
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: SourceCodePro, Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
@@ -164,7 +164,7 @@ button:disabled:hover {
   box-shadow: none;
 }
 
-#app {
+#__nuxt {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
