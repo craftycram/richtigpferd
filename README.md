@@ -1,75 +1,30 @@
-# Nuxt Minimal Starter
+# richtig pferd - Password Generator
 
-Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+## About
 
-## Setup
+**richtig pferd** is a password generator that creates passwords which are easy to remember but hard to guess. This tool operates entirely within your browser, ensuring that no data is transferred to any server. The project is inspired by the [XKCD Comic "Password Strength"](https://xkcd.com/936/).
 
-Make sure to install dependencies:
+## How It Works
 
-```bash
-# npm
-npm install
+To generate secure passwords, **richtig pferd** randomly selects words from a [word list](https://richtigpferd.pw/wordlist.txt) containing over 25,000 German words, including nouns, verbs, and adjectives. These words are randomly combined to form the password.
 
-# pnpm
-pnpm install
+## Word Sources
 
-# yarn
-yarn install
+The words are sourced from [GitHub - AlleDeutschenWoerter](https://github.com/cpos/AlleDeutschenWoerter).
 
-# bun
-bun install
-```
+## Credits
 
-## Development Server
+Created and provided by [Marc Rufeis](https://www.marcrufeis.de/) & [ITMR Developments](https://itmr-dev.de/). Additional contributors can be found on [GitHub](https://github.com/craftycram/richtig-pferd).
 
-Start the development server on `http://localhost:3000`:
+## Contributing
 
-```bash
-# npm
-npm run dev
+If you would like to help improve or translate this project, you can do so on [GitHub](https://github.com/craftycram/richtig-pferd).
 
-# pnpm
-pnpm dev
+## Languages Available
 
-# yarn
-yarn dev
+- German (de)
+- English (en)
 
-# bun
-bun run dev
-```
+---
 
-## Production
-
-Build the application for production:
-
-```bash
-# npm
-npm run build
-
-# pnpm
-pnpm build
-
-# yarn
-yarn build
-
-# bun
-bun run build
-```
-
-Locally preview production build:
-
-```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+*This project is a gift for my long-time mentor and friend [Florian Geiselhart](https://www.florian-geiselhart.de/).*
