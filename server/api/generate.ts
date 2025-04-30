@@ -34,11 +34,11 @@ export default defineEventHandler(async (event) => {
     };
   }
 
-  const wordlistFile = fs.readFileSync('./public/wordlist.txt', 'utf8');
+  const wordlistFile = fs.readFileSync('../public/wordlist.txt', 'utf8');
   const wordlist = wordlistFile.split('\n').filter((word) => word.trim() !== '');
 
   let words = [];
-  for (let i = 0; i < parseInt(length as string || '5', 10); i++) {
+  for (let i = 0; i < length; i++) {
     const randomIndex = Math.floor(Math.random() * wordlist.length);
     words.push(wordlist[randomIndex]);
   }
