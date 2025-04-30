@@ -17,13 +17,6 @@ const copiedTimeout = ref(null);
 
 const isCtrlOrMetaPressed = ref(false);
 
-fetch('/wordlist.txt')
-  .then((response) => response.text())
-  .then((text) => text.split('\n'))
-  .then((list) => (wordlist.value = list))
-  .then(() => (loaded.value = true))
-  .then(() => generate());
-
 function generate() {
   copied.value = false;
 
@@ -142,10 +135,26 @@ function handleKeyboardUp(e) {
   }
 }
 
-onMounted(() => {
+onMounted(async () => {
   loadSettings();
   document.addEventListener('keydown', handleKeyboardDown);
   document.addEventListener('keyup', handleKeyboardUp);
+  
+  try {
+    const response = await fetch('/wordlist.txt', { cache: 'no-store' });
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const text = await response.text();
+    wordlist.value = text.split('\n').filter(Boolean); // Filter out empty lines
+    loaded.value = true;
+    generate();
+  } catch (error) {
+    console.error('Error loading wordlist:', error);
+    wordlist.value = ['error', 'loading', 'wordlist'];
+    loaded.value = true;
+    generate();
+  }
 });
 
 onBeforeUnmount(() => {
