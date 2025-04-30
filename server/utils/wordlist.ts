@@ -1,5 +1,7 @@
-import { readFileSync } from 'node:fs';
+import { readFileSync, readdirSync } from 'node:fs';
 import { join } from 'node:path';
+
+console.log(readdirSync(process.cwd()));
 
 // Read wordlist during build time
 const wordlistPath = join(process.cwd(), 'wordlist.txt');
