@@ -70,6 +70,8 @@ export default defineEventHandler(async (event) => {
   }
 
   appendHeader(event, 'Content-Type', 'text/plain;charset=UTF-8'); 
+  appendHeader(event, 'Access-Control-Allow-Origin', '*');
+  appendHeader(event, 'Access-Control-Allow-Methods', 'GET, OPTIONS');
 
   return result;
 });
