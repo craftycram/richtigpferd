@@ -73,8 +73,9 @@ async function copy() {
     copiedTimeout.value = setTimeout(() => {
       copied.value = false;
     }, 1000);
-  } catch ($e) {
+  } catch (e) {
     copied.value = false;
+    console.log(e);
   }
 }
 
