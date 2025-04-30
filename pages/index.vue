@@ -17,45 +17,21 @@ const copiedTimeout = ref(null);
 
 const isCtrlOrMetaPressed = ref(false);
 
-function generate() {
+async function generate() {
   copied.value = false;
+  
+  const data = await $fetch('/api/generate', {
+    query: {
+      length: length.value,
+      digit: digit.value,
+      keepCase: keepCase.value,
+      uppercase: uppercase.value,
+      dash: dash.value,
+      umlauts: umlauts.value,
+    },
+  })
 
-  let words = [];
-  for (let i = 0; i < length.value; i++) {
-    const randomIndex = Math.floor(Math.random() * wordlist.value.length);
-    words.push(wordlist.value[randomIndex]);
-  }
-
-  let result = '';
-  if (uppercase.value && !keepCase.value) {
-    words = words.map((word) => {
-      return `${word.charAt(0).toUpperCase()}${word.slice(1)}`;
-    });
-  } else if (!keepCase.value) {
-    words = words.map((word) => word.toLowerCase());
-  }
-  if (digit.value) {
-    const randomIndex = Math.floor(Math.random() * 10);
-    words.push(randomIndex);
-  }
-  if (dash.value) {
-    result = words.join('-');
-  } else {
-    result = words.join('');
-  }
-
-  if (!umlauts.value) {
-    result = result
-      .replace(/ä/g, 'ae')
-      .replace(/ö/g, 'oe')
-      .replace(/ü/g, 'ue')
-      .replace(/ß/g, 'ss')
-      .replace(/Ä/g, 'Ae')
-      .replace(/Ö/g, 'Oe')
-      .replace(/Ü/g, 'Ue');
-  }
-
-  password.value = result;
+  password.value = data;
 }
 
 async function copy() {
