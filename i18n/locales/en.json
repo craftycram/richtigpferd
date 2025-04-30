@@ -21,6 +21,7 @@
     "xkdc": "XKCD Comic \"Password Strength\"",
     "words": "To generate secure passwords, random words are selected from a {0} containing over 25,000 German words. These include nouns, verbs, and adjectives. The words are randomly chosen and concatenated.",
     "wordlist": "Word List",
+    "api": "The API can also be used to generate passwords. This API is open source and can be found on {0}. The documentation is available on {1}.",
     "sources": "Word Sources",
     "poweredBy": "Created and provided by",
     "contributors": "Additional contributors can be found on {0}.",

@@ -21,6 +21,7 @@
     "xkdc": "XKCD Comic \"Password Strength\"",
     "words": "Um sichere Passwörter zu generieren, werden zufällige Wörter aus einer {0} mit über 25.000 Deutschen Wörtern ausgewählt. Darunter befinden sich Substantive, Verben und Adjektive. Die Wörter werden zufällig ausgewählt und aneinander gehängt.",
     "wordlist": "Wortliste",
+    "api": "Es können auch Passwörter mit einer API generiert werden. Diese API ist Open Source und kann auf {0} gefunden werden. Die Dokumentation ist auf {1} verfügbar.",
     "sources": "Wort-Quellen",
     "poweredBy": "Erstellt und bereigtestellt von",
     "contributors": "Weitere Mitwirkende finden sich auf {0}.",
